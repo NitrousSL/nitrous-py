@@ -31,4 +31,4 @@ python main.py
 - Email : 3
 - Phone : 4
 - IP : 5
-- Quit : 6
+- Quit : q
