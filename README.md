@@ -21,6 +21,10 @@ pip install --upgrade git+https://github.com/NitrousSL/nitrous-py.git
 
 ## Usage
 
+```ruby
+$ nitrous-oxi
+```
+
 ### Options:
 
 ```text
