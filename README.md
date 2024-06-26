@@ -8,6 +8,11 @@ Python | Nitrous API python client (standalone application)
 pip install git+https://github.com/NitrousSL/nitrous-py.git
 ```
 
+**Updating the client**:
+```
+pip install --upgrade git+https://github.com/NitrousSL/nitrous-py.git
+```
+
 ---
 
 ## Usage
