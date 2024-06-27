@@ -47,7 +47,7 @@ def display_menu():
         ('q', 'Quit')
     ]
     result = radiolist_dialog(
-        title='NITROUS-OXI',
+        title='NITROUS-OXIDE',
         text='Select an option:',
         values=options,
         style=style
