@@ -1,4 +1,4 @@
-# nitrous-py
+# Nitrous-Py
 ### Python | Nitrous API Python Client 
 
 
