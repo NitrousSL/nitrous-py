@@ -14,13 +14,27 @@ from nitrous_oxi.utils import clean_phone
 console = Console()
 client = NitrousOxiClient()
 
-style = Style.from_dict({
-    'banner': '#0000ff bold',
-    'option': '#00ffff',
-    'option-selected': '#ff0000 bold',
-    'prompt': '#ffffff bold',
-    'error': '#ff0000 bold'
-})
+# Define themes
+themes = {
+    'default': Style.from_dict({
+        'banner': '#0000ff bold',
+        'option': '#00ffff',
+        'option-selected': '#ff0000 bold',
+        'prompt': '#ffffff bold',
+        'error': '#ff0000 bold'
+    }),
+    'dark': Style.from_dict({
+        'banner': '#ffffff bold',
+        'option': '#00ff00',
+        'option-selected': '#ff00ff bold',
+        'prompt': '#ffffff bold',
+        'error': '#ff0000 bold'
+    }),
+}
+
+# Set initial theme
+current_theme = 'default'
+style = themes[current_theme]
 
 def display_banner():
     banner = r"""
@@ -42,6 +56,8 @@ def display_menu():
         ('3', 'Search by Email'),
         ('4', 'Search by Phone'),
         ('5', 'Search by IP'),
+        ('t', 'Change Theme'),
+        ('f', 'Change Result Format'),
         ('q', 'Quit')
     ]
     result = radiolist_dialog(
@@ -51,6 +67,20 @@ def display_menu():
         style=style
     ).run()
     return result
+
+def change_theme():
+    global style, current_theme
+    theme_options = [(key, key) for key in themes.keys()]
+    theme_choice = radiolist_dialog(
+        title='Change Theme',
+        text='Select a theme:',
+        values=theme_options,
+        style=style
+    ).run()
+    if theme_choice:
+        current_theme = theme_choice
+        style = themes[current_theme]
+        print_formatted_text(FormattedText([("class:prompt", f"Theme changed to {current_theme}")]), style=style)
 
 def search_category(category, query=None):
     if query is None:
@@ -71,6 +101,9 @@ def display_results(data):
         console.print(Panel(table, title="Search Results"))
     else:
         console.print(Panel("No data found", title="Search Results", style="error"))
+
+def change_result_format():
+    print("Changing result format is currently a placeholder.")
 
 def main():
     parser = argparse.ArgumentParser(description='Nitrous-Oxi CLI Tool')
@@ -110,6 +143,10 @@ def main():
                 search_category("phone")
             elif choice == '5':
                 search_category("ip")
+            elif choice == 't':
+                change_theme()
+            elif choice == 'f':
+                change_result_format()
             elif choice == 'q':
                 print_formatted_text(FormattedText([("class:error", "Exiting...")]), style=style)
                 break
