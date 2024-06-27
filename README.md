@@ -1,17 +1,16 @@
-# nitrous-Py
-### Python | Nitrous API Python Client (Standalone Application)
+# nitrous-py
+### Python | Nitrous API Python Client 
 
 ---
+## Setup
 
-## Installation
-
-To install the client, run:
+### Installation
 
 ```bash
 pip install git+https://github.com/NitrousSL/nitrous-py.git
 ```
 
-To update the client, run:
+### Updating
 
 ```bash
 pip install --upgrade git+https://github.com/NitrousSL/nitrous-py.git
