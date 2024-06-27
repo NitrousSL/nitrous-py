@@ -54,3 +54,7 @@ $ nitrous-oxi
 
 **Note:** Make sure to have a stable internet connection while using the client.
 
+---
+
+![Alt](https://repobeats.axiom.co/api/embed/4ae843ebb2e4cf313522ce10d6accf9c1a9b7d78.svg "Repobeats analytics image")
+
