@@ -9,7 +9,6 @@ setup(
         'requests',
         'prompt_toolkit',
         'rich'
-        'argparse'
     ],
     entry_points={
         'console_scripts': [
