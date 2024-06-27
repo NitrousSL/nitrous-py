@@ -1,5 +1,6 @@
 # nitrous-py
 ### Python | Nitrous API Python Client 
+### DEV BRANCH
 
 ---
 ## Setup
@@ -7,13 +8,13 @@
 ### Installation
 
 ```bash
-pip install git+https://github.com/NitrousSL/nitrous-py.git
+pip install git+https://github.com/NitrousSL/nitrous-py.git@dev#egg=nitrous_py
 ```
 
 ### Updating
 
 ```bash
-pip install --upgrade git+https://github.com/NitrousSL/nitrous-py.git
+pip install --upgrade git+https://github.com/NitrousSL/nitrous-py.git@dev#egg=nitrous_py
 ```
 
 ---
