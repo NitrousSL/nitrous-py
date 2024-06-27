@@ -24,6 +24,14 @@ pip install --upgrade git+https://github.com/NitrousSL/nitrous-py.git
 ```ruby
 $ nitrous-oxi
 ```
+```
+-s, --search: Perform a search
+-u, --username: Search by username
+-d, --domain: Search by domain
+-e, --email: Search by email
+-p, --phone: Search by phone
+-i, --ip: Search by IP
+```
 
 ### Options:
 
