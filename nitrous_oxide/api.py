@@ -1,22 +1,25 @@
 import requests
+from typing import Union, List, Dict
+
 
 class NitrousOxiClient:
-    def __init__(self, base_url="https://api.nitrous-oxi.de"):
+    def __init__(self, base_url: str = "https://api.nitrous-oxi.de"):
         self.base_url = base_url
 
-    def fetch_data(self, category, query):
-        url = f"{self.base_url}/{category}?query={query}"
+    def _make_request(self, url: str) -> Union[List, Dict]:
         response = requests.get(url)
-        if response.status_code == 200:
-            try:
-                data = response.json()
-                if isinstance(data, list):
-                    return data
-                elif isinstance(data, dict):
-                    return data.get("data", {})
-            except ValueError:
-                raise ValueError(f"Invalid JSON response for {query} in {category}")
-        elif response.status_code == 404:
-            raise ValueError(f"No data found for {query} in {category}")
+        response.raise_for_status()  # This will raise an HTTPError if the HTTP request returned an unsuccessful status code
+        return response.json()
+
+    def fetch_data(self, category: str, query: str) -> Union[List, Dict]:
+        url = f"{self.base_url}/{category}?query={query}"
+        data = self._make_request(url)
+
+        if isinstance(data, list):
+            return data
+        elif isinstance(data, dict):
+            return data.get("data", {})
         else:
-            raise ValueError(f"Error fetching data for {query} in {category}")
+            raise ValueError(f"Unexpected response format for {query} in {category}")
+
+

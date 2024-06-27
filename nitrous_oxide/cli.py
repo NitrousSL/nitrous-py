@@ -49,37 +49,28 @@ def display_menu():
         text='Select an option:',
         values=options,
         style=style
-    ).run()
+    )
     return result
 
 def search_category(category, query=None):
-    if not query:
-        query = prompt(FormattedText([("class:prompt", f"Enter the {category} to search: ")]), style=style)
-        if category == "phone":
-            query = clean_phone(query)
-    data = client.fetch_data(category, query)
-    if data:
-        display_data(category, data)
+    if query is None:
+        query = prompt(f"Enter {category}: ", style=style)
+    try:
+        data = client.fetch_data(category, query)
+        display_results(data)
+    except ValueError as e:
+        print_formatted_text(FormattedText([("class:error", str(e))]), style=style)
 
-def display_data(category, data):
-    for item in data:
-        if 'name' in item and 'data' in item:
-            table = Table(title=f"[bold blue]{category.capitalize()} - {item['name'].capitalize()} Results[/bold blue]",
-                          box=box.ROUNDED, border_style="green", highlight=True)
-            table.add_column("[bold magenta]Key[/bold magenta]", justify="left")
-            table.add_column("[bold cyan]Value[/bold cyan]", justify="left")
-            item_data = item['data']['data']
-            if isinstance(item_data, dict):
-                for key, value in item_data.items():
-                    table.add_row(f"[bold yellow]{key}[/bold yellow]", str(value))
-            elif isinstance(item_data, list):
-                for sub_item in item_data:
-                    if isinstance(sub_item, dict):
-                        for key, value in sub_item.items():
-                            table.add_row(f"[bold yellow]{key}[/bold yellow]", str(value))
-                    else:
-                        table.add_row("[bold yellow]Value[/bold yellow]", str(sub_item))
-            console.print(table)
+def display_results(data):
+    if isinstance(data, list) and data:
+        table = Table(box=box.ROUNDED)
+        for key in data[0].keys():
+            table.add_column(key)
+        for item in data:
+            table.add_row(*[str(value) for value in item.values()])
+        console.print(Panel(table, title="Search Results"))
+    else:
+        console.print(Panel("No data found", title="Search Results", style="error"))
 
 def main():
     parser = argparse.ArgumentParser(description='Nitrous-Oxi CLI Tool')
@@ -89,7 +80,7 @@ def main():
     parser.add_argument('-e', '--email', help='Search by email')
     parser.add_argument('-p', '--phone', help='Search by phone')
     parser.add_argument('-i', '--ip', help='Search by IP')
-    
+
     args = parser.parse_args()
 
     if args.search:
