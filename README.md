@@ -1,4 +1,4 @@
-# Nitrous-Py
+# nitrous-Py
 ### Python | Nitrous API Python Client (Standalone Application)
 
 ---
@@ -22,7 +22,7 @@ pip install --upgrade git+https://github.com/NitrousSL/nitrous-py.git
 ## Usage
 
 ```ruby
-$ nitrous-oxi
+$ nitrous-oxide
 ```
 ```
 -s, --search: Perform a search
@@ -55,6 +55,6 @@ $ nitrous-oxi
 **Note:** Make sure to have a stable internet connection while using the client.
 
 ---
-
+## Repository Stats
 ![Alt](https://repobeats.axiom.co/api/embed/4ae843ebb2e4cf313522ce10d6accf9c1a9b7d78.svg "Repobeats analytics image")
 
