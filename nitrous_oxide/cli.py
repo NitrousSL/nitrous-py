@@ -49,7 +49,7 @@ def display_menu():
         text='Select an option:',
         values=options,
         style=style
-    )
+    ).run()
     return result
 
 def search_category(category, query=None):
