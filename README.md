@@ -9,13 +9,13 @@
 To install the client, run:
 
 ```bash
-pip install git+https://github.com/NitrousSL/nitrous-py.git@dev#egg=nitrous_py
+pip install git+https://github.com/NitrousSL/nitrous-py.git@dev#egg=nitrous-oxide
 ```
 
 To update the client, run:
 
 ```bash
-pip install --upgrade git+https://github.com/NitrousSL/nitrous-py.git@dev#egg=nitrous_py
+pip install --upgrade git+https://github.com/NitrousSL/nitrous-py.git@dev#egg=nitrous-oxide
 ```
 
 ---
