@@ -22,7 +22,7 @@ setup(
     },
     classifiers=[
         'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License',
+        'License :: OSI Approved :: GPLv3',
         'Operating System :: OS Independent',
     ],
     python_requires='>=3.6',
